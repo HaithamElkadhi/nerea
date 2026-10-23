@@ -1,0 +1,11 @@
+document.documentElement.classList.add('js-ready');
+const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), {threshold: .08});
+document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+const menuButton = document.querySelector('.menu-toggle');
+const navigation = document.querySelector('nav');
+menuButton.addEventListener('click', () => { const open = navigation.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(open)); menuButton.textContent = open ? 'Chiudi' : 'Menu'; });
+navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { navigation.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.textContent = 'Menu'; }));
+document.querySelectorAll('.activity-list details').forEach(detail => detail.addEventListener('toggle', () => { if (detail.open) document.querySelectorAll('.activity-list details').forEach(other => { if (other !== detail) other.open = false; }); }));
+document.querySelector('.project-open').addEventListener('click', () => document.querySelector('#project-dialog').showModal());
+document.querySelector('#privacy-open').addEventListener('click', () => document.querySelector('#privacy-dialog').showModal());
+document.querySelectorAll('dialog').forEach(dialog => { dialog.querySelector('.close-dialog').addEventListener('click', () => dialog.close()); dialog.addEventListener('click', event => { if (event.target === dialog) { const bounds = dialog.getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close(); } }); });
