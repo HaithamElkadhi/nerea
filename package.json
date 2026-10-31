@@ -1,1 +1,1 @@
-{"name":"nerea-aps","version":"1.0.0","private":true,"scripts":{"dev":"node server.cjs","start":"node server.cjs","check":"node --check dist/script.js"}}
+{"name":"nerea-aps","version":"2.0.0","private":true,"engines":{"node":">=22.0.0"},"scripts":{"dev":"node server.cjs","start":"node server.cjs","check":"node --check server.cjs && node --check backend/app.cjs && node --check backend/airtable.cjs && node --check dist/script.js && node --check dist/admin.js","test":"node --test tests/*.test.cjs"}}

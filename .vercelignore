@@ -1,0 +1,10 @@
+.git
+.env
+.env.*
+.openai
+.vercel
+outputs
+tests
+tmp
+website
+README.md

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "echo No dependencies",
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "dist/**",
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    {"source": "/", "destination": "/api/index?__nereaPath=/index.html"},
+    {"source": "/:path*", "destination": "/api/index?__nereaPath=/:path*"}
+  ]
+}
